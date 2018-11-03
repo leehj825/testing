@@ -1,6 +1,7 @@
 import os
 import time,thread
 
+
 def display_screen(interval):
     x = 0
     while True:
@@ -22,13 +23,13 @@ def display_screen(interval):
             print("/")
         x = x + 1
         time.sleep(interval)
+    thread.exit()
 
 def wait_for_input():
-    while True:
-        if 'y' == raw_input():
-            os.system('clear');
-            print("stop")
-            exit()
+    while 'y' != raw_input():
+        print("stop")
+        
 
 thread.start_new_thread(display_screen, (0.2,))
 wait_for_input()
+os.system('clear');
